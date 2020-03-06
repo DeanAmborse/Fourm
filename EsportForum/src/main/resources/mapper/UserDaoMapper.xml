@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.Esport.work.dao.UserDao">
+	<insert id="regist" parameterType="Users">
+		insert into user(username,password,msg) values(#{username},#{password},#{msg})
+	</insert>
+	<select id="login" resultType="Users">
+		select * from user where username=#{username} and password=#{password}
+	</select>
+	<select id="findUserByName" resultType="String">
+		select msg from user where username=#{username}
+	</select>
+	<update id="UpdateUsername" parameterType="Users">
+		update user set username=#{username} 
+		where username=#{username} and password=#{password} 
+	</update>
+	<update id="UpdateUserpwd" parameterType="Users">
+		update user set password=#{password}
+		where username=#{username} and password=#{password} 
+	</update>
+</mapper>

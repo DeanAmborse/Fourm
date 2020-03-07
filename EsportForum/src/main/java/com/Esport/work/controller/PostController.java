@@ -1,6 +1,5 @@
 package com.Esport.work.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.cookie;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -17,8 +16,6 @@ import com.Esport.work.service.UserService;
 public class PostController {
 	@Autowired
 	private UserService userService;
-	@Autowired
-	private PostService postService;
 	@PostMapping(value="/publishUser")
 	public String publish(@RequestParam("ptitle") String ptitle
 						 ,@RequestParam("pbody") String pbody

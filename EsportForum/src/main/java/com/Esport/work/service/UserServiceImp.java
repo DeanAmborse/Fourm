@@ -11,6 +11,7 @@ import com.Esport.work.entity.Users;
 @Service
 @Transactional
 public class UserServiceImp implements UserService{
+	
 	@Autowired
 	private UserDao userdao;
 

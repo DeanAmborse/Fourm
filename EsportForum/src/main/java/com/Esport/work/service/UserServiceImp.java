@@ -5,6 +5,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.Esport.work.dao.UserDao;
+import com.Esport.work.entity.UserState;
 import com.Esport.work.entity.Users;
 
 @Service
@@ -24,4 +25,17 @@ public class UserServiceImp implements UserService{
 		// TODO Auto-generated method stub
 		return userdao.login(username,password);
 	}
+
+	@Override
+	public void insert(UserState uState) {
+		// TODO Auto-generated method stub
+		userdao.insert(uState);
+	}
+
+	@Override
+	public UserState findByToken(String token) {
+		// TODO Auto-generated method stub
+		return userdao.findByToken(token);
+	}
+
 }

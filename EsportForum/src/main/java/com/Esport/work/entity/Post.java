@@ -6,7 +6,7 @@ public class Post {
 	private String pbody;
 	private Long psendtime;
 	private String tag;
-	private Long id;
+	private String username;
 	private Integer view_count;
 	private Integer comment_count;
 	private Integer like_count;
@@ -40,14 +40,18 @@ public class Post {
 	public void setTag(String tag) {
 		this.tag = tag;
 	}
-	
-	public Long getId() {
-		return id;
+	public Long getPsendtime() {
+		return psendtime;
 	}
-	public void setId(Long id) {
-		this.id = id;
+	public void setPsendtime(Long psendtime) {
+		this.psendtime = psendtime;
 	}
-	
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
 	public Integer getView_count() {
 		return view_count;
 	}
@@ -67,7 +71,7 @@ public class Post {
 		this.like_count = like_count;
 	}
 	public Post() {}
-	public Post(String pid, String ptitle, String pbody, Long psendtime, String tag, Long id, Integer view_count,
+	public Post(String pid, String ptitle, String pbody, Long psendtime, String tag, String username, Integer view_count,
 			Integer comment_count, Integer like_count) {
 		super();
 		this.pid = pid;
@@ -75,7 +79,7 @@ public class Post {
 		this.pbody = pbody;
 		this.psendtime = psendtime;
 		this.tag = tag;
-		this.id = id;
+		this.username = username;
 		this.view_count = view_count;
 		this.comment_count = comment_count;
 		this.like_count = like_count;

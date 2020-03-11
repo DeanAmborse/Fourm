@@ -11,4 +11,5 @@ public class EsportForumApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(EsportForumApplication.class, args);
 	}
+
 }

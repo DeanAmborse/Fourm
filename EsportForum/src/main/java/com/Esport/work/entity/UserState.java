@@ -5,8 +5,7 @@ public class UserState {
 	private String username;
 	private String token;
 	private String account_id;
-	private Long create_GMT;
-	private Long modified_GMT;
+	private String create_GMT;
 	public Long getId() {
 		return id;
 	}
@@ -25,17 +24,11 @@ public class UserState {
 	public void setAccount_id(String account_id) {
 		this.account_id = account_id;
 	}
-	public Long getCreate_GMT() {
+	public String getCreate_GMT() {
 		return create_GMT;
 	}
-	public void setCreate_GMT(Long create_GMT) {
+	public void setCreate_GMT(String create_GMT) {
 		this.create_GMT = create_GMT;
-	}
-	public Long getModified_GMT() {
-		return modified_GMT;
-	}
-	public void setModified_GMT(Long modified_GMT) {
-		this.modified_GMT = modified_GMT;
 	}
 	public String getUsername() {
 		return username;
@@ -46,16 +39,15 @@ public class UserState {
 	@Override
 	public String toString() {
 		return "UserState [id=" + id + ", username=" + username + ", token=" + token + ", account_id=" + account_id
-				+ ", create_GMT=" + create_GMT + ", modified_GMT=" + modified_GMT + "]";
+				+ ", create_GMT=" + create_GMT + "]";
 	}
-	public UserState(Long id, String username, String token, String account_id, Long create_GMT, Long modified_GMT) {
+	public UserState(Long id, String username, String token, String account_id, String create_GMT, Long modified_GMT) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.token = token;
 		this.account_id = account_id;
 		this.create_GMT = create_GMT;
-		this.modified_GMT = modified_GMT;
 	}
 	public UserState() {
 		

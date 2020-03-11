@@ -7,6 +7,7 @@
 	<link rel="shortcut icon" th:href="@{/static/img/bitbug_favicon.ico}" />
 	<link rel="stylesheet" th:href="@{/static/css/bootstrap-theme.min.css}" href="/static/css/bootstrap-theme.min.css">
 	<link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/static/css/Forum.css}" href="/static/css/Forum.css">
 	<script type="text/javascript" th:src="@{/static/js/jquery.min.js}" src="/static/js/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}" src="/static/js/bootstrap.min.js"></script>
 </head>
@@ -70,8 +71,27 @@
 </nav>
 <div class="container-fluid" style="margin-top:100px; margin-left: 150px;margin-right: 150px;margin-bottom: 100px;">
 	<div class="row">
-		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="height:1000px; background-color: white;"></div>
-		<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="height:1000px; background-color: white;"></div>
+		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="height:1000px; background-color: white;">
+			<h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 发现</h2>
+			<hr>
+			<div class="media" th:each="post :${posts}">
+  				<div class="media-left media-middle">
+    				<a href="#">
+      					<img class="media-object img-rounded" src="...">
+   					 </a>
+  			</div>
+  			<div class="media-body">
+    			<h3 class="media-heading" th:text="${post.ptitle}"></h3>
+    			·<span class="text-list"> <span th:text="${post.comment_count}"></span>个回复
+    			·<span th:text="${post.view_count}"></span>次浏览 
+    			·发布时间:<span th:text="${post.psendtime}"></span>
+    			</span>
+  			</div>
+</div>
+		</div>
+		<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="height:1000px; background-color: white;">
+			<h3><b>热议</b></h3>
+		</div>
 	</div>
 </div>
 </body>

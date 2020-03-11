@@ -5,8 +5,8 @@
 		insert into user(username,password,msg) values(#{username},#{password},#{msg})
 	</insert>
 	<insert id="insert" parameterType="UserState">
-		insert into userstate(username,account_id,token,create_GMT,modified_GMT)
-		values(#{username},#{account_id},#{token},#{create_GMT},#{modified_GMT})
+		insert into userstate(username,account_id,token,create_GMT)
+		values(#{username},#{account_id},#{token},#{create_GMT})
 	</insert>
 	<select id="findByToken" resultType="UserState">
 		select * from userstate where token = #{token}
@@ -25,4 +25,7 @@
 		update user set password=#{password}
 		where username=#{username} and password=#{password} 
 	</update>
+	<select id="findById" resultType="Users">
+		select * from user where id=#{id}
+	</select>
 </mapper>

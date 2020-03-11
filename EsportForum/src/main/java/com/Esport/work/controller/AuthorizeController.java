@@ -1,5 +1,7 @@
 package com.Esport.work.controller;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -28,7 +30,7 @@ public class AuthorizeController {
 						  ,HttpServletResponse response) {
 		AccessTokenDTO accessTokenDTO = new AccessTokenDTO();
 		accessTokenDTO.setClient_id("bba52e8c21784714cfa0");
-		accessTokenDTO.setClient_secret("182433f9d66d300916e8dcd520f8629e2b992593");
+		accessTokenDTO.setClient_secret("d3e90012538dc2fff6ca345d36740459823ff2c3");
 		accessTokenDTO.setCode(code);
 		accessTokenDTO.setRedirect_uri("http://localhost:8060/callback");
 		accessTokenDTO.setState(state);
@@ -39,12 +41,11 @@ public class AuthorizeController {
 			String token = UUID.randomUUID().toString();
 			uState.setToken(token);
 			uState.setAccount_id(String.valueOf(githubUser.getId()));
-			uState.setCreate_GMT(System.currentTimeMillis());
-			uState.setModified_GMT(uState.getCreate_GMT());
+			SimpleDateFormat dFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			uState.setCreate_GMT(dFormat.format(new Date()));
 			uState.setUsername(githubUser.getName());
 			userService.insert(uState);
-			Cookie cookie = new Cookie("token", token);
-			response.addCookie(cookie);
+			response.addCookie(new Cookie("token", token));
 			return "redirect:/";
 		}else{
 			return "login";

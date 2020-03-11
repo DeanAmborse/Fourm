@@ -2,6 +2,8 @@ package com.Esport.work.controller;
 
 
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.UUID;
 
 import javax.servlet.http.Cookie;
@@ -36,8 +38,8 @@ public class UserController {
 			String token = UUID.randomUUID().toString();
 			uState.setToken(token);
 			uState.setAccount_id(String.valueOf(u.getId()));
-			uState.setCreate_GMT(System.currentTimeMillis());
-			uState.setModified_GMT(uState.getCreate_GMT());
+			SimpleDateFormat dFormat= new SimpleDateFormat("yyyy-MM-dd HH:mm");
+			uState.setCreate_GMT(dFormat.format(new Date()));
 			uState.setUsername(u.getUsername());
 			userService.insert(uState);
 			response.addCookie(new Cookie("token", token));

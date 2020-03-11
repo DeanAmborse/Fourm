@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.Esport.work.dao.PostDao">
-	<insert id="Save" parameterType="Post">
-		insert into post (ptitle,pbody,tag,psendtime,username) 
-		value(#{ptitle},#{pbody},#{tag},#{psendtime},#{username})
+	<insert id="save" parameterType="Post">
+		insert into post (ptitle,pbody,psendtime,tag,creatorID)
+		values (#{ptitle},#{pbody},#{psendtime},#{tag},#{creatorID})
 	</insert>
+	<select id="list" resultType="Post">
+		select * from post
+	</select>
 </mapper>

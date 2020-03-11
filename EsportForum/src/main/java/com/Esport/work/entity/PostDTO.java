@@ -1,6 +1,6 @@
 package com.Esport.work.entity;
 
-public class Post {
+public class PostDTO {
 	private Integer pid;
 	private String ptitle;
 	private String pbody;
@@ -10,6 +10,7 @@ public class Post {
 	private Integer view_count;
 	private Integer comment_count;
 	private Integer like_count;
+	private Users users;
 	public Integer getPid() {
 		return pid;
 	}
@@ -43,7 +44,7 @@ public class Post {
 	public String getCreatorID() {
 		return creatorID;
 	}
-	public void setCreator(String creatorID) {
+	public void setCreatorID(String creatorID) {
 		this.creatorID = creatorID;
 	}
 	public Integer getView_count() {
@@ -64,19 +65,11 @@ public class Post {
 	public void setLike_count(Integer like_count) {
 		this.like_count = like_count;
 	}
-	public Post(Integer pid, String ptitle, String pbody, String psendtime
-			, String tag, String creatorID,
-			Integer view_count, Integer comment_count, Integer like_count) {
-		super();
-		this.pid = pid;
-		this.ptitle = ptitle;
-		this.pbody = pbody;
-		this.psendtime = psendtime;
-		this.tag = tag;
-		this.creatorID = creatorID;
-		this.view_count = view_count;
-		this.comment_count = comment_count;
-		this.like_count = like_count;
+	public Users getUsers() {
+		return users;
 	}
-	public Post() {}
+	public void setUsers(Users users) {
+		this.users = users;
+	}
+	
 }

@@ -6,6 +6,9 @@
 		values (#{ptitle},#{pbody},#{psendtime},#{tag},#{creatorID})
 	</insert>
 	<select id="list" resultType="Post">
-		select * from post
+		select * from post limit #{offset} ,#{size}
+	</select>
+	<select id="count" resultType="Integer">
+		select count(1) from post
 	</select>
 </mapper>

@@ -51,10 +51,7 @@ public class PostController {
 		post.setTag(tag);
 		post.setCreator(uState.getAccount_id());
 		SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm");
-		post.setPsendtime(df.format(new Date()));
-		post.setLike_count(0);
-		post.setView_count(0);
-		post.setComment_count(0);
+		post.setPsendtime(df.format(new Date()));	
 		postService.save(post);
 		return "redirect:/";
 	}

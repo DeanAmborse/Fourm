@@ -10,7 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 
+import com.Esport.work.entity.PageDTO;
 import com.Esport.work.entity.PostDTO;
 import com.Esport.work.entity.UserState;
 import com.Esport.work.service.PostService;
@@ -23,7 +25,9 @@ public class IndexController {
 	@Autowired
 	private PostService postService;
 	@GetMapping(value="/")
-	public String index(HttpServletRequest request,Model model) {
+	public String index(HttpServletRequest request,Model model,
+						@RequestParam(name="page",defaultValue = "1") Integer page,
+						@RequestParam(name="size",defaultValue = "7") Integer size) {
 		Cookie[] cookies = request.getCookies();
 		if(cookies !=null) {
 			for(Cookie cookie : cookies) {
@@ -37,8 +41,8 @@ public class IndexController {
 				}
 			}
 		}
-		List<PostDTO> postList = postService.list();
-		model.addAttribute("posts", postList);
+		PageDTO pageDTO = postService.list(page,size);
+		model.addAttribute("pageDTO", pageDTO);
 		return "index";
 	}
 	@GetMapping(value="/publish")

@@ -10,6 +10,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.Esport.work.dao.PostDao;
 import com.Esport.work.dao.UserDao;
+import com.Esport.work.entity.PageDTO;
 import com.Esport.work.entity.Post;
 import com.Esport.work.entity.PostDTO;
 import com.Esport.work.entity.Users;
@@ -27,9 +28,19 @@ public class PostServiceImp implements PostService{
 		postDao.save(post);
 	}
 	@Override
-	public List<PostDTO> list() {
+	public PageDTO list(Integer page,Integer size) {
 		// TODO Auto-generated method stub
-		List<Post> list = postDao.list();
+		Integer totalCount = postDao.count();
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageDTO(totalCount,page,size);
+		if(page < 1) {
+			page = 1;
+		}
+		if(page > pageDTO.getTotalPage()) {
+			page = pageDTO.getTotalPage();
+		}
+		Integer offset = size * (page-1);
+		List<Post> list = postDao.list(offset,size);
 		List<PostDTO> list2 = new ArrayList<>();
 		for (Post post : list) {
 			Users user = userDao.findById(post.getCreatorID());
@@ -38,7 +49,9 @@ public class PostServiceImp implements PostService{
 			pDto.setUsers(user);
 			list2.add(pDto);
 		}
-		return list2;
+		pageDTO.setPosts(list2);
+		
+		return pageDTO;
 	}
 
 }

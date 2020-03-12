@@ -11,7 +11,7 @@
 	<script type="text/javascript" th:src="@{/static/js/jquery.min.js}" src="/static/js/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}" src="/static/js/bootstrap.min.js"></script>
 </head>
-<body background="/static/img/bkimg.jpg"style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
+<body background="/static/img/timg.jpg"style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
 <nav class="navbar navbar-default navbar-fixed-top" >
   <div class="container-fluid">
     <!-- Brand and toggle get grouped for better mobile display -->
@@ -71,25 +71,52 @@
 </nav>
 <div class="container-fluid" style="margin-top:100px; margin-left: 150px;margin-right: 150px;margin-bottom: 100px;">
 	<div class="row">
-		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="height:1000px; background-color: white;">
+		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="height:700px; background-color: #FFF5EE;border-radius: 10px 0px 0px 10px;">
 			<h2><span class="glyphicon glyphicon-list" aria-hidden="true"></span> 发现</h2>
 			<hr>
-			<div class="media" th:each="post :${posts}">
+			<div class="media" th:each="post : ${pageDTO.posts}">
   				<div class="media-left media-middle">
     				<a href="#">
       					<img class="media-object img-rounded" src="...">
    					 </a>
+  				</div>
+  				<div class="media-body">
+    				<h3 class="media-heading" th:text="${post.ptitle}"></h3>
+    				·<span class="text-list"> <span th:text="${post.comment_count}"></span>个回复
+    				·<span th:text="${post.view_count}"></span>次浏览 
+    				·发布时间:<span th:text="${post.psendtime}"></span>
+    				</span>
+  				</div>
   			</div>
-  			<div class="media-body">
-    			<h3 class="media-heading" th:text="${post.ptitle}"></h3>
-    			·<span class="text-list"> <span th:text="${post.comment_count}"></span>个回复
-    			·<span th:text="${post.view_count}"></span>次浏览 
-    			·发布时间:<span th:text="${post.psendtime}"></span>
-    			</span>
-  			</div>
-</div>
+  			<nav aria-label="Page navigation">
+			  <ul class="pagination">
+			  <li th:if="${pageDTO.showFirst}">
+			    	<a href="/?page=1" aria-label="Previous">
+			        	<span aria-hidden="true">&lt;&lt;</span>
+			      	</a>
+			    </li>
+			    <li th:if="${pageDTO.showPrevious}">
+			    	<a th:href="@{/(page = ${pageDTO.page-1})}" aria-label="Previous">
+			        	<span aria-hidden="true">&lt;</span>
+			      	</a>
+			    </li>
+			    <li th:each="page : ${pageDTO.pages}" th:class="${pageDTO.page == page}?'active':''">
+			    	<a  th:href="@{/(page = ${page})}" th:text="${page}"></a>
+			    </li>
+			    <li th:if="${pageDTO.showNext}">
+			    	<a th:href="@{/(page = ${pageDTO.page+1})}" aria-label="Previous">
+			        	<span aria-hidden="true">&gt;</span>
+			      	</a>
+			    </li>
+			    <li th:if="${pageDTO.showEnd}">
+			    	<a th:href="@{/(page = ${pageDTO.totalPage})}" aria-label="Previous">
+			        	<span aria-hidden="true">&gt;&gt;</span>
+			      	</a>
+			    </li>
+			  </ul>
+			</nav>
 		</div>
-		<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="height:1000px; background-color: white;">
+		<div class="col-lg-3 col-md-12 col-sm-12 col-xs-12" style="height:700px; background-color: #FFF5EE; border-radius: 0px 10px 10px 0px;">
 			<h3><b>热议</b></h3>
 		</div>
 	</div>

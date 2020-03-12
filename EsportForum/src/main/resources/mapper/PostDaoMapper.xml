@@ -11,4 +11,10 @@
 	<select id="count" resultType="Integer">
 		select count(1) from post
 	</select>
+	<select id="list1" resultType="Post">
+		select * from post where creatorID = #{creatorID} limit #{offset} ,#{size}
+	</select>
+	<select id="countbyUser" resultType="Integer">
+		select count(1) from post where creatorID = #{creatorID}
+	</select>
 </mapper>

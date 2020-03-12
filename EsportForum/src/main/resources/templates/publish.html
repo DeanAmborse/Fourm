@@ -29,63 +29,7 @@
 	</script>
 </head>
 <body background="/static/img/timg1.jpg"style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
-<nav class="navbar navbar-default navbar-fixed-top" >
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">DeanEsportForum</span>
-      </button>
-      <a class="navbar-brand" href="/"style="font-weight: bold;font-size: 22px">Dean电竞社区</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="dropdown">
-          <a class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"style="font-size: 15px;">分类 <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><a href=" "style="font-size: 16px;">英雄联盟</a></li>
-            <li><a href=" "style="font-size: 16px;">绝地求生</a></li>
-            <li><a href=" "style="font-size: 16px;">王者荣耀</a></li>
-            <li><a href=" "style="font-size: 16px;">更多游戏</a></li>
-          </ul>
-        </li>
-        <li><a href=""style="font-size: 15px;">关于我们</a></li>
-        <li><a href=""style="font-size: 15px;">
-        	发帖
-        	<span class="glyphicon glyphicon-pencil" aria-hidden="true">
-        	</span>
-        	</a>
-        </li>
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-          <button type="submit" class="btn btn-default">
-        		<span class="glyphicon glyphicon-search" aria-hidden="true"></span>
-          </button>
-        </div>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        <li class="dropdown" th:if="${session.users != null}">
-          <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"style="font-size: 15px;">
-          <span th:text="'Welcome'+'!'+${session.users.getUsername()}" style="font-weight: bold;font-size: 15px;"></span>
-          <span class="glyphicon glyphicon-cog" aria-hidden="true"></span> 
-          <span class="caret"></span>
-          </a>
-          <ul class="dropdown-menu">
-            <li><a href="">我的主页</a></li>
-            <li><a href="/loginout">退出登录</a></li>
-          </ul>
-        </li>
-        <li th:if="${session.users == null}">
-        <a href="/loginPage" style="font-size: 18px;"><b>登录</b></a>
-        </li>
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
+<div th:insert="~{navigation :: nav}"></div>
 <div class="container-fluid" style="margin-top:100px; margin-left: 150px;margin-right: 150px;margin-bottom: 100px;">
 	<div class="row">
 		<div class="col-lg-9 col-md-12 col-sm-12 col-xs-12" style="height:600px; background-color: #FFF5EE;border-radius: 10px 0px 0px 10px;">

@@ -30,17 +30,55 @@ public class PostServiceImp implements PostService{
 	@Override
 	public PageDTO list(Integer page,Integer size) {
 		// TODO Auto-generated method stub
+		Integer totalPage ;
 		Integer totalCount = postDao.count();
-		PageDTO pageDTO = new PageDTO();
-		pageDTO.setPageDTO(totalCount,page,size);
+		if(totalCount % size == 0) {
+			totalPage = totalCount / size;
+		}else {
+			totalPage = totalCount / size + 1;
+		}
 		if(page < 1) {
 			page = 1;
 		}
-		if(page > pageDTO.getTotalPage()) {
-			page = pageDTO.getTotalPage();
+		if(page > totalPage) {
+			page = totalPage;
 		}
+		PageDTO pageDTO = new PageDTO();
+		pageDTO.setPageDTO(totalPage,page);
 		Integer offset = size * (page-1);
 		List<Post> list = postDao.list(offset,size);
+		List<PostDTO> list2 = new ArrayList<>();
+		for (Post post : list) {
+			Users user = userDao.findById(post.getCreatorID());
+			PostDTO pDto = new PostDTO();
+			BeanUtils.copyProperties(post, pDto);
+			pDto.setUsers(user);
+			list2.add(pDto);
+		}
+		pageDTO.setPosts(list2);
+		
+		return pageDTO;
+	}
+	@Override
+	public PageDTO list1(String creatorID, Integer page, Integer size) {
+		// TODO Auto-generated method stub
+		Integer totalPage;
+		Integer totalCount = postDao.countbyUser(creatorID);
+		if(totalCount % size == 0) {
+			totalPage = totalCount / size;
+		}else {
+			totalPage = totalCount / size + 1;
+		}
+		PageDTO pageDTO = new PageDTO();
+		if(page < 1) {
+			page = 1;
+		}
+		if(page > totalPage) {
+			page = totalPage;
+		}
+		pageDTO.setPageDTO(totalPage,page);
+		Integer offset = size * (page-1);
+		List<Post> list = postDao.list1(creatorID,offset,size);
 		List<PostDTO> list2 = new ArrayList<>();
 		for (Post post : list) {
 			Users user = userDao.findById(post.getCreatorID());

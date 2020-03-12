@@ -75,19 +75,9 @@ public class PageDTO {
 		this.totalPage = totalPage;
 	}
 
-	public void setPageDTO(Integer totalCount, Integer page2, Integer size) {
+	public void setPageDTO(Integer totalPage, Integer page2) {
 		// TODO Auto-generated method stub
-		if(totalCount % size == 0) {
-			totalPage = totalCount / size;
-		}else {
-			totalPage = totalCount / size + 1;
-		}
-		if(page2 < 1) {
-			page2 = 1;
-		}
-		if(page2 >totalPage) {
-			page2 = totalPage;
-		}
+		this.totalPage = totalPage;
 		this.page = page2;
 		pages.add(page2);
 		for(int i = 1;i <= 3 ; i++) {

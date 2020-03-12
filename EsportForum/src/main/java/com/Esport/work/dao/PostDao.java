@@ -11,4 +11,6 @@ public interface PostDao {
 	void save(Post post);
 	List<Post> list(@Param(value = "offset")Integer offset,@Param(value = "size")Integer size);
 	Integer count();
+	List<Post> list1(@Param(value = "creatorID")String creatorID,@Param(value = "offset")Integer offset,@Param(value = "size")Integer size);
+	Integer countbyUser(@Param(value = "creatorID") String creatorID);
 }

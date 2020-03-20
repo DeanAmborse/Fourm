@@ -36,17 +36,18 @@
 			<h2><span class="glyphicon glyphicon-plus" aria-hidden="true"></span>发表</h2>
 			<hr>
 			<form action="/publish" method="post" name="form" onsubmit="return check();">
+				<input type="hidden" name="pid" th:value="${pid}">
 				<div class="form-group">
 					<label for="ptitle">帖子标题（简单扼要）</label>
-					<input type="text" class="form-control" maxlength="60" id="ptitle" name="ptitle" placeholder="帖子标题......不要超过40字">	
+					<input type="text" class="form-control" maxlength="60" id="ptitle" name="ptitle" th:value="${title}" placeholder="帖子标题......不要超过40字">	
 				</div>
 				<div class="form-group">
 					<label for="pbody">帖子内容（参考提示内容）</label>
-					<textarea rows="10" class="form-control" cols="30" id="pbody" name="pbody" placeholder="帖子内容......"></textarea>
+					<textarea rows="10" class="form-control" cols="30" id="pbody" name="pbody" th:text="${body}" placeholder="帖子内容......"></textarea>
 				</div>
 				<div class="form-group">
 					<label for="tag">添加标签</label>
-					<input type="text" class="form-control" id="tag" name="tag" placeholder="帖子标签">	
+					<input type="text" class="form-control" id="tag" name="tag" th:value="${tag}" placeholder="帖子标签">	
 				</div>
 				<button class="btn btn-success" type="submit" style="float: right;">发布</button>
 			</form>

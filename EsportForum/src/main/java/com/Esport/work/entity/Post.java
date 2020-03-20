@@ -5,6 +5,7 @@ public class Post {
 	private String ptitle;
 	private String pbody;
 	private String psendtime;
+	private String updatetime;
 	private String tag;
 	private String creatorID;
 	private Integer view_count;
@@ -43,9 +44,6 @@ public class Post {
 	public String getCreatorID() {
 		return creatorID;
 	}
-	public void setCreator(String creatorID) {
-		this.creatorID = creatorID;
-	}
 	public Integer getView_count() {
 		return view_count;
 	}
@@ -64,14 +62,25 @@ public class Post {
 	public void setLike_count(Integer like_count) {
 		this.like_count = like_count;
 	}
-	public Post(Integer pid, String ptitle, String pbody, String psendtime
-			, String tag, String creatorID,
-			Integer view_count, Integer comment_count, Integer like_count) {
+	
+	public String getUpdatetime() {
+		return updatetime;
+	}
+	public void setUpdatetime(String updatetime) {
+		this.updatetime = updatetime;
+	}
+	public void setCreatorID(String creatorID) {
+		this.creatorID = creatorID;
+	}
+	
+	public Post(Integer pid, String ptitle, String pbody, String psendtime, String updatetime, String tag,
+			String creatorID, Integer view_count, Integer comment_count, Integer like_count) {
 		super();
 		this.pid = pid;
 		this.ptitle = ptitle;
 		this.pbody = pbody;
 		this.psendtime = psendtime;
+		this.updatetime = updatetime;
 		this.tag = tag;
 		this.creatorID = creatorID;
 		this.view_count = view_count;

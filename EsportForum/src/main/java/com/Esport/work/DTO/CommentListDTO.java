@@ -1,10 +1,10 @@
-package com.Esport.work.entity;
+package com.Esport.work.DTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class PageDTO {
-	private List<PostDTO> posts;
+public class CommentListDTO {
+	private List<CommentgetDTO> comments;
 	private boolean showPrevious;
 	private boolean showFirst;
 	private boolean showNext;
@@ -12,69 +12,54 @@ public class PageDTO {
 	private Integer page;
 	private List<Integer> pages = new ArrayList<>();
 	private Integer totalPage;
-	public List<PostDTO> getPosts() {
-		return posts;
+	public List<CommentgetDTO> getComments() {
+		return comments;
 	}
-
-	public void setPosts(List<PostDTO> posts) {
-		this.posts = posts;
+	public void setComments(List<CommentgetDTO> comments) {
+		this.comments = comments;
 	}
-
 	public boolean isShowPrevious() {
 		return showPrevious;
 	}
-
 	public void setShowPrevious(boolean showPrevious) {
 		this.showPrevious = showPrevious;
 	}
-
 	public boolean isShowFirst() {
 		return showFirst;
 	}
-
 	public void setShowFirst(boolean showFirst) {
 		this.showFirst = showFirst;
 	}
-
 	public boolean isShowNext() {
 		return showNext;
 	}
-
 	public void setShowNext(boolean showNext) {
 		this.showNext = showNext;
 	}
-
 	public boolean isShowEnd() {
 		return showEnd;
 	}
-
 	public void setShowEnd(boolean showEnd) {
 		this.showEnd = showEnd;
 	}
-
 	public Integer getPage() {
 		return page;
 	}
-
 	public void setPage(Integer page) {
 		this.page = page;
 	}
-
 	public List<Integer> getPages() {
 		return pages;
 	}
-
 	public void setPages(List<Integer> pages) {
 		this.pages = pages;
 	}
 	public Integer getTotalPage() {
 		return totalPage;
 	}
-
 	public void setTotalPage(Integer totalPage) {
 		this.totalPage = totalPage;
 	}
-
 	public void setPageDTO(Integer totalPage, Integer page2) {
 		// TODO Auto-generated method stub
 		this.totalPage = totalPage;
@@ -112,6 +97,12 @@ public class PageDTO {
 		}else {
 			showEnd = true;
 		}
+	}
+	@Override
+	public String toString() {
+		return "CommentListDTO [comments=" + comments + ", showPrevious=" + showPrevious + ", showFirst=" + showFirst
+				+ ", showNext=" + showNext + ", showEnd=" + showEnd + ", page=" + page + ", pages=" + pages
+				+ ", totalPage=" + totalPage + "]";
 	}
 	
 }

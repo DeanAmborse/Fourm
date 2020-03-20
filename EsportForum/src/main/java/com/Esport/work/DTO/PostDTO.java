@@ -1,10 +1,13 @@
-package com.Esport.work.entity;
+package com.Esport.work.DTO;
+
+import com.Esport.work.entity.Users;
 
 public class PostDTO {
 	private Integer pid;
 	private String ptitle;
 	private String pbody;
 	private String psendtime;
+	private String updatetime;
 	private String tag;
 	private String creatorID;
 	private Integer view_count;
@@ -70,6 +73,12 @@ public class PostDTO {
 	}
 	public void setUsers(Users users) {
 		this.users = users;
+	}
+	public String getUpdatetime() {
+		return updatetime;
+	}
+	public void setUpdatetime(String updatetime) {
+		this.updatetime = updatetime;
 	}
 	
 }

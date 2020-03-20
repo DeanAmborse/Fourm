@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="zh" xmlns:th="http://www.thymleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<meta name="keywords" content="javascript,vueJS,Jquery,AngularJS,HTML5,CSS3">
+	<title>我的主页</title>
+	<link rel="shortcut icon" th:href="@{/static/img/bitbug_favicon.ico}" />
+	<link rel="stylesheet" th:href="@{/static/css/bootstrap-theme.min.css}" href="/static/css/bootstrap-theme.min.css">
+	<link rel="stylesheet" th:href="@{/static/css/bootstrap.min.css}" href="/static/css/bootstrap.min.css">
+	<link rel="stylesheet" th:href="@{/static/css/Forum.css}" href="/static/css/Forum.css">
+	<script type="text/javascript" th:src="@{/static/js/jquery.min.js}" src="/static/js/jquery.min.js"></script>
+	<script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}" src="/static/js/bootstrap.min.js"></script>
+</head>
+<body>
+	<div class="container-fluid" style="margin-top:100px; margin-left: 150px;margin-right: 150px;margin-bottom: 100px;">
+		<div class="row">
+			<div class="jumbotron">
+  				<h1>出错啦！！！</h1>
+  				<p th:text="${message}">要不...稍后试试？</p>
+  				<p><a class="btn btn-primary btn-lg" href="/" role="button">回到过去~</a></p>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

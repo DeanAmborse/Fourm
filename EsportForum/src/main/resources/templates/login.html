@@ -10,6 +10,15 @@
 	<script type="text/javascript" th:src="@{/static/js/jquery.min.js}" src="/static/js/jquery.min.js"></script>
 	<script type="text/javascript" th:src="@{/static/js/bootstrap.min.js}" src="/static/js/bootstrap.min.js"></script>
 </head>
+<script type="text/javascript">
+	window.onload = function(){
+		var closeable = window.localStorage.getItem("closeable");
+		if(closeable == "true"){
+			window.close();
+			window.localStorage.removeItem("closeable")
+		}
+	}
+</script>
 <body background="/static/img/timg.jpg"style=" background-repeat:no-repeat ;background-size:100% 100%;background-attachment: fixed;">
 	<div class="container-fluid" style="margin-top:100px;margin-left: 200px;margin-right: 100px;margin-bottom: 100px;">
 		<div class="row">

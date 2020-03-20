@@ -17,25 +17,21 @@ public class UserServiceImp implements UserService{
 
 	@Override
 	public void register(Users users) {
-		// TODO Auto-generated method stub
 		userdao.regist(users);
 	}
 
 	@Override
 	public Users login(String username,String password) {
-		// TODO Auto-generated method stub
 		return userdao.login(username,password);
 	}
 
 	@Override
 	public void insert(UserState uState) {
-		// TODO Auto-generated method stub
 		userdao.insert(uState);
 	}
 
 	@Override
 	public UserState findByToken(String token) {
-		// TODO Auto-generated method stub
 		return userdao.findByToken(token);
 	}
 

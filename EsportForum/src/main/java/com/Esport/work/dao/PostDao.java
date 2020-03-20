@@ -13,4 +13,8 @@ public interface PostDao {
 	Integer count();
 	List<Post> list1(@Param(value = "creatorID")String creatorID,@Param(value = "offset")Integer offset,@Param(value = "size")Integer size);
 	Integer countbyUser(@Param(value = "creatorID") String creatorID);
+	Post getById(@Param("pid") Integer pid);
+	void update(Post post);
+	void updateView(Post post);
+	void updateComment(Post post);
 }

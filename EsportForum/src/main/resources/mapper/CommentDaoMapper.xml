@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
+<mapper namespace="com.Esport.work.dao.CommentDao">
+	<insert id="insert" parameterType="Comment">
+		insert into comment (parentId,type,commentor,createtime,updatetime,likecount,content)
+		values ( #{parentId}, #{type}, #{commentor}, #{createtime}, #{updatetime}, #{likecount}, #{content})
+	</insert>
+	<select id="findbyID" resultType="Comment">
+		select * from comment where id = #{id}
+	</select>
+	<select id="commentCount" resultType="int">
+		select count(1) from comment where parentId = #{parentId}
+	</select>
+	<select id="list" resultType="Comment">
+		select * from comment 
+		where parentId = #{parentId}
+		order by id desc 
+	</select>
+</mapper>

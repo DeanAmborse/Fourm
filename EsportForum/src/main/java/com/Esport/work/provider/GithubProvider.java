@@ -4,7 +4,7 @@ import java.io.IOException;
 
 import org.springframework.stereotype.Component;
 
-import com.Esport.work.entity.AccessTokenDTO;
+import com.Esport.work.DTO.AccessTokenDTO;
 import com.Esport.work.entity.GithubUser;
 import com.alibaba.fastjson.JSON;
 
@@ -29,7 +29,6 @@ public class GithubProvider {
 			String token = string.split("&")[0].split("=")[1];
 			return token;
 		}catch (Exception e) {
-		// TODO: handle exception
 			e.printStackTrace();
 		}
 		return null;
@@ -45,7 +44,6 @@ public class GithubProvider {
 			GithubUser githubUser = JSON.parseObject(string, GithubUser.class);
 			return githubUser;
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return null;

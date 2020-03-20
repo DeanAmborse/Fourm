@@ -2,11 +2,11 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "mybatis-3-mapper.dtd" >
 <mapper namespace="com.Esport.work.dao.PostDao">
 	<insert id="save" parameterType="Post">
-		insert into post (ptitle,pbody,psendtime,tag,creatorID)
-		values (#{ptitle},#{pbody},#{psendtime},#{tag},#{creatorID})
+		insert into post (ptitle,pbody,psendtime,updatetime,tag,creatorID,comment_count,view_count,like_count)
+		values (#{ptitle},#{pbody},#{psendtime},#{updatetime},#{tag},#{creatorID},#{comment_count},#{view_count},#{like_count})
 	</insert>
 	<select id="list" resultType="Post">
-		select * from post limit #{offset} ,#{size}
+		select * from post order by pid desc limit #{offset} ,#{size}
 	</select>
 	<select id="count" resultType="Integer">
 		select count(1) from post
@@ -17,4 +17,22 @@
 	<select id="countbyUser" resultType="Integer">
 		select count(1) from post where creatorID = #{creatorID}
 	</select>
+	<select id="getById" resultType="Post">
+		select * from post where pid = #{pid}
+	</select>
+	<update id="update" parameterType="Post">
+		update post 
+		set ptitle=#{ptitle} ,pbody=#{pbody},tag=#{tag},updatetime=#{updatetime} ,view_count=#{view_count},comment_count=#{comment_count}
+		where pid = #{pid} 
+	</update>
+	<update id="updateView" parameterType="Post">
+		update post 
+		set view_count = #{view_count}
+		where pid = #{pid}
+	</update>
+	<update id="updateComment" parameterType="Post">
+		update post
+		set comment_count = #{comment_count}
+		where pid = #{pid}
+	</update>
 </mapper>

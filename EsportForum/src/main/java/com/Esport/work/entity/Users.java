@@ -6,6 +6,7 @@ public class Users {
 	private String username;
 	private String password;
 	private String msg;
+	private String avatar;
 	public Long getId() {
 		return id;
 	}
@@ -30,17 +31,24 @@ public class Users {
 	public void setMsg(String msg) {
 		this.msg = msg;
 	}
-	public Users(Long id, String username, String password, String msg) {
+	public Users(Long id, String username, String password, String msg, String avatar) {
 		super();
 		this.id = id;
 		this.username = username;
 		this.password = password;
 		this.msg = msg;
+		this.avatar = avatar;
 	}
 	public Users(){}
 	@Override
 	public String toString() {
 		return "Users [id=" + id + ", username=" + username + ", password=" + password + ", msg=" + msg + "]";
+	}
+	public String getAvatar() {
+		return avatar;
+	}
+	public void setAvatar(String avatar) {
+		this.avatar = avatar;
 	}
 	
 }
